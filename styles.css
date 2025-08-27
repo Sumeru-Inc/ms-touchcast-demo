@@ -16,24 +16,18 @@
     --border-light: #E0E0E0;
 }
 
+html, body {
+    height: 100%;
+    overflow: hidden;
+}
+
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
     line-height: 1.6;
     color: var(--ms-black);
     background: var(--ms-white);
-    min-height: 100vh;
-}
-
-.page-wrapper {
-    min-height: 100vh;
     display: flex;
     flex-direction: column;
-}
-
-.container {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 0 20px;
 }
 
 /* Header Styles */
@@ -41,13 +35,16 @@ body {
     background: var(--ms-white);
     padding: 20px 0;
     border-bottom: 1px solid var(--border-light);
-    position: sticky;
-    top: 0;
+    position: relative;
     z-index: 100;
 }
 
-.logo-section {
+.header-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 40px;
     display: flex;
+    justify-content: space-between;
     align-items: center;
 }
 
@@ -56,78 +53,58 @@ body {
     width: auto;
 }
 
-/* Main Content */
+.sumeru-logo-header {
+    height: 40px;
+    width: auto;
+    transition: transform 0.2s ease;
+}
+
+.sumeru-logo-header:hover {
+    transform: scale(1.05);
+}
+
+/* Main Content with Full Background */
 .main-content {
     flex: 1;
-    padding: 60px 0;
-    background: linear-gradient(to bottom, var(--ms-white) 0%, var(--ms-gray-light) 100%);
-}
-
-.content-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
-    align-items: start;
-}
-
-/* Avatar Section */
-.avatar-section {
-    display: flex;
-    justify-content: center;
-}
-
-.avatar-container {
-    background-image: url('./assets/morgan-stanley-building.jpg');
+    position: relative;
+    background-image: url('./assets/morgan-stanley-building.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    border-radius: 8px;
-    padding: 0;
-    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 600px;
-    height: 500px;
-    position: relative;
-    overflow: hidden;
-    border: 1px solid var(--border-light);
-}
-
-.avatar-wrapper {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 50%;
-    height: 50%;
-    background: transparent;
-    padding: 10px;
-}
-
-.avatar-frame {
-    width: 100%;
-    height: 100%;
-    border-radius: 4px;
-    display: block;
-    background: transparent;
-}
-
-/* Info Section */
-.info-section {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
 }
 
-.info-card {
-    background: var(--ms-white);
-    border-radius: 8px;
-    padding: 40px;
-    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
-    border: 1px solid var(--border-light);
+.main-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1;
 }
 
-.section-title {
+/* Centered Content Card */
+.content-card {
+    position: relative;
+    z-index: 2;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    padding: 36px 48px;
+    max-width: 800px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.main-title {
     color: var(--ms-black);
-    font-size: 36px;
-    margin-bottom: 24px;
+    font-size: 42px;
+    margin-bottom: 16px;
     font-weight: 300;
     line-height: 1.2;
     letter-spacing: -0.5px;
@@ -136,155 +113,166 @@ body {
 .description {
     color: var(--ms-gray-dark);
     font-size: 16px;
-    line-height: 1.8;
-    margin-bottom: 32px;
+    line-height: 1.6;
+    margin-bottom: 24px;
     font-weight: 400;
 }
 
-.features {
-    margin-top: 40px;
-    padding-top: 32px;
+.services-list {
+    margin-top: 20px;
+    padding-top: 20px;
     border-top: 1px solid var(--border-light);
 }
 
-.features h3 {
+.services-list h3 {
     color: var(--ms-black);
     font-size: 14px;
-    margin-bottom: 24px;
+    margin-bottom: 16px;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 1px;
 }
 
-.feature-list {
+.services-list ul {
     list-style: none;
 }
 
-.feature-list li {
+.services-list li {
     display: flex;
     align-items: center;
-    padding: 16px 0;
-    border-bottom: 1px solid var(--ms-gray-light);
-    transition: all 0.2s ease;
-    cursor: default;
+    padding: 8px 0;
+    color: var(--ms-gray-dark);
+    font-size: 15px;
 }
 
-.feature-list li:last-child {
-    border-bottom: none;
-}
-
-.feature-list li:hover {
-    background: var(--ms-blue-light);
-    margin: 0 -20px;
-    padding-left: 20px;
-    padding-right: 20px;
-}
-
-.feature-icon {
+.bullet {
     color: var(--ms-blue);
     font-weight: bold;
-    margin-right: 16px;
+    margin-right: 12px;
     font-size: 16px;
 }
 
-.feature-list li span:not(.feature-icon) {
-    color: var(--ms-black);
-    font-size: 15px;
-    font-weight: 500;
+/* Avatar Frame */
+.avatar-frame {
+    position: fixed;
+    bottom: 60px;  /* Raised above footer */
+    right: -80px;  /* Partially off-screen to the right */
+    width: 380px;
+    height: 214px;
+    border: none;
+    background: transparent;
+    z-index: 50;
+    border-radius: 8px;
 }
 
 /* Footer */
 .footer {
-    background: var(--ms-black);
-    color: var(--ms-white);
-    padding: 24px 0;
-    text-align: center;
-    font-size: 13px;
+    background: rgba(0, 0, 0, 0.9);
+    padding: 16px 0;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 40;  /* Below avatar */
 }
 
-.footer p {
-    opacity: 0.8;
+.footer-content {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: var(--ms-white);
+    font-size: 14px;
+}
+
+.sumeru-logo {
+    height: 20px;
+    width: auto;
+    vertical-align: middle;
 }
 
 /* Responsive Design */
 @media (max-width: 1024px) {
-    .content-grid {
-        grid-template-columns: 1fr;
-        gap: 30px;
+    .content-card {
+        margin: 20px;
+        max-width: calc(100% - 40px);
     }
     
-    .avatar-container {
-        max-width: 100%;
+    .avatar-frame {
+        width: 340px;
+        height: 191px;
+        right: -70px;
     }
 }
 
 @media (max-width: 768px) {
-    .section-title {
-        font-size: 28px;
+    html, body {
+        overflow: auto;
     }
     
     .main-content {
-        padding: 40px 0;
+        min-height: calc(100vh - 120px);
+        padding: 40px 20px;
     }
     
-    .avatar-container {
-        height: 400px;
+    .content-card {
+        padding: 28px 32px;
     }
     
-    .avatar-wrapper {
-        width: 60%;
-        height: 40%;
+    .main-title {
+        font-size: 32px;
     }
     
-    .info-card {
-        padding: 30px;
-    }
-    
-    .feature-list li:hover {
-        margin: 0 -15px;
-        padding-left: 15px;
-        padding-right: 15px;
+    .avatar-frame {
+        width: 320px;
+        height: 180px;
+        right: -60px;
+        bottom: 60px;
     }
 }
 
 @media (max-width: 480px) {
+    .header-container {
+        padding: 0 20px;
+    }
+    
     .ms-logo {
         height: 24px;
     }
     
-    .section-title {
-        font-size: 24px;
+    .sumeru-logo-header {
+        height: 28px;
+    }
+    
+    .content-card {
+        padding: 20px 24px;
+    }
+    
+    .main-title {
+        font-size: 28px;
     }
     
     .description {
         font-size: 14px;
     }
     
-    .avatar-container {
-        height: 300px;
+    .services-list li {
+        font-size: 14px;
+        padding: 10px 0;
     }
     
-    .avatar-wrapper {
-        width: 70%;
-        height: 50%;
+    .avatar-frame {
+        width: 280px;
+        height: 158px;
+        right: -50px;
     }
     
-    .info-card {
-        border-radius: 8px;
-        padding: 20px;
-    }
-    
-    .features h3 {
+    .footer-content {
         font-size: 12px;
     }
     
-    .feature-list li {
-        padding: 12px 0;
-    }
-    
-    .feature-list li:hover {
-        margin: 0 -10px;
-        padding-left: 10px;
-        padding-right: 10px;
+    .sumeru-logo {
+        height: 16px;
     }
 }
