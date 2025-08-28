@@ -48,6 +48,20 @@ body {
     align-items: center;
 }
 
+.logo-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+}
+
+.demo-text {
+    font-size: 10px;
+    color: var(--ms-gray-dark);
+    font-weight: 400;
+    letter-spacing: 0.5px;
+}
+
 .ms-logo {
     height: 32px;
     width: auto;
@@ -74,6 +88,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    padding-bottom: 80px;
     overflow: hidden;
 }
 
@@ -92,18 +107,18 @@ body {
 .content-card {
     position: relative;
     z-index: 2;
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(128, 128, 128, 0.4);
     backdrop-filter: blur(10px);
     border-radius: 12px;
     padding: 36px 48px;
     max-width: 800px;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .main-title {
-    color: var(--ms-black);
-    font-size: 42px;
+    color: var(--ms-white);
+    font-size: 36px;
     margin-bottom: 16px;
     font-weight: 300;
     line-height: 1.2;
@@ -111,7 +126,7 @@ body {
 }
 
 .description {
-    color: var(--ms-gray-dark);
+    color: rgba(255, 255, 255, 0.95);
     font-size: 16px;
     line-height: 1.6;
     margin-bottom: 24px;
@@ -121,11 +136,11 @@ body {
 .services-list {
     margin-top: 20px;
     padding-top: 20px;
-    border-top: 1px solid var(--border-light);
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .services-list h3 {
-    color: var(--ms-black);
+    color: var(--ms-white);
     font-size: 14px;
     margin-bottom: 16px;
     font-weight: 600;
@@ -141,12 +156,12 @@ body {
     display: flex;
     align-items: center;
     padding: 8px 0;
-    color: var(--ms-gray-dark);
+    color: rgba(255, 255, 255, 0.9);
     font-size: 15px;
 }
 
 .bullet {
-    color: var(--ms-blue);
+    color: rgba(255, 255, 255, 0.95);
     font-weight: bold;
     margin-right: 12px;
     font-size: 16px;
@@ -156,9 +171,9 @@ body {
 .avatar-frame {
     position: fixed;
     bottom: 60px;  /* Raised above footer */
-    right: -80px;  /* Partially off-screen to the right */
-    width: 380px;
-    height: 214px;
+    right: -90px;  /* Partially off-screen to the right */
+    width: 450px;
+    height: 253px;
     border: none;
     background: transparent;
     z-index: 50;
@@ -200,9 +215,9 @@ body {
     }
     
     .avatar-frame {
-        width: 340px;
-        height: 191px;
-        right: -70px;
+        width: 400px;
+        height: 225px;
+        right: -80px;
     }
 }
 
@@ -221,13 +236,13 @@ body {
     }
     
     .main-title {
-        font-size: 32px;
+        font-size: 30px;
     }
     
     .avatar-frame {
-        width: 320px;
-        height: 180px;
-        right: -60px;
+        width: 360px;
+        height: 203px;
+        right: -70px;
         bottom: 60px;
     }
 }
@@ -250,7 +265,7 @@ body {
     }
     
     .main-title {
-        font-size: 28px;
+        font-size: 26px;
     }
     
     .description {
@@ -263,9 +278,9 @@ body {
     }
     
     .avatar-frame {
-        width: 280px;
-        height: 158px;
-        right: -50px;
+        width: 320px;
+        height: 180px;
+        right: -60px;
     }
     
     .footer-content {
